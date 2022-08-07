@@ -5,7 +5,7 @@ const deleteUserController = (req, res) => {
 
   const deletedUser = deleteUserService(id);
 
-  return res.status(200).json(deletedUser);
+  return res.status(200).json({ message: deletedUser });
 };
 
 export default deleteUserController;

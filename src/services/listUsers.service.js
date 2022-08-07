@@ -1,13 +1,22 @@
 import users from "../database";
 
 const listUsersService = () => {
-  const showUsers = [...users];
+  const newUserArray = [];
 
-  showUsers.forEach((user) => {
-    delete user.password;
+  users.forEach((user) => {
+    const userObj = {
+      name: user.name,
+      email: user.email,
+      createdOn: user.createdOn,
+      updatedOn: user.updatedOn,
+      uuid: user.uuid,
+      isAdm: user.isAdm,
+    };
+
+    newUserArray.push(userObj);
   });
 
-  return showUsers;
+  return newUserArray;
 };
 
 export default listUsersService;
