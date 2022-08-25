@@ -1,6 +1,7 @@
 import users from "../database";
 import jwt from "jsonwebtoken";
 import { compare } from "bcrypt";
+import "dotenv/config";
 
 const createSessionService = async ({ email, password }) => {
   const user = users.find((user) => user.email === email);
@@ -20,7 +21,7 @@ const createSessionService = async ({ email, password }) => {
       email: user.email,
       isAdm: user.isAdm,
     },
-    "1234",
+    process.env.SECRET_KEY,
     {
       expiresIn: "24h",
       subject: user.uuid,

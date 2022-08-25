@@ -3,13 +3,12 @@ import { v4 as uuidv4 } from "uuid";
 import { hash } from "bcrypt";
 
 const createUserService = async (email, name, password, isAdm) => {
-  const createdDate = new Date();
   const todayDate = new Date();
 
   const newUser = {
     name,
     email,
-    createdOn: createdDate,
+    createdOn: todayDate,
     updatedOn: todayDate,
     uuid: uuidv4(),
     isAdm,

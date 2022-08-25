@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import users from "../database";
+import "dotenv/config";
 
 const userEditAuthenticationMiddleware = (req, res, next) => {
   let token = req.headers.authorization;
@@ -12,7 +12,7 @@ const userEditAuthenticationMiddleware = (req, res, next) => {
 
   token = token.split(" ")[1];
 
-  jwt.verify(token, "1234", (error, decoded) => {
+  jwt.verify(token, process.env.SECRET_KEY, (error, decoded) => {
     if (error) {
       return res.status(401).json({ message: "You don't have permission." });
     }
